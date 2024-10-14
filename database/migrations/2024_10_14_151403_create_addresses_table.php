@@ -13,6 +13,13 @@ return new class extends Migration
     {
         Schema::create('addresses', function (Blueprint $table) {
             $table->id();
+            $table->string('strees', 200)->nullable();
+            $table->string('city', 100)->nullable();
+            $table->string('province', 100)->nullable();
+            $table->string('country', 100)->nullable(false);
+            $table->string('postal_code', 10)->nullable();
+            $table->unsignedBigInteger('contact_id')->nullable(false);
+            $table->foreign('contact_id')->on('contacts')->references('id');
             $table->timestamps();
         });
     }
